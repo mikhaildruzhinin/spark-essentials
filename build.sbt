@@ -11,9 +11,11 @@ val postgresVersion = "42.2.2"
 resolvers ++= Seq(
   "bintray-spark-packages" at "https://dl.bintray.com/spark-packages/maven",
   "Typesafe Simple Repository" at "https://repo.typesafe.com/typesafe/simple/maven-releases",
-  "MavenRepository" at "https://mvnrepository.com"
+  "MavenRepository" at "https://mvnrepository.com",
+  "Secured Central Repository" at "https://repo.maven.apache.org/maven2"
 )
 
+externalResolvers := Resolver.combineDefaultResolvers(resolvers.value.toVector, mavenCentral = false)
 
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % sparkVersion,
